@@ -1,0 +1,16 @@
+version: "3"
+services:
+  docker-tutorial:
+    build: .
+    ports:
+      - "3000:3000"
+    # environment:
+    #   - PORT=3000
+    env_file: 
+      - ./.env
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-db:/data/db
+volumes:
+  mongo-db:

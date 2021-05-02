@@ -1,0 +1,19 @@
+version: "3"
+services:
+  docker-tutorial:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app:ro
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    env_file: 
+      - ./.env
+    command: npm run dev
+  mongo:
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=docker-tutorial
+      - MONGO_INITDB_ROOT_PASSWORD=docker-tutorial-password
